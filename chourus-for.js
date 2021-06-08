@@ -1,6 +1,12 @@
-const chourus ='Let\'s dance!';
-for (let repeat =0; repeat < 10; repeat++) {
-console.log(chourus);
+function whichSchool(age) {
+  if (age < 13) {
+    console.log('elementary school')
+  }
+  else if  ((age >= 13) && (age <= 18) ) {
+    console.log('Secondary school ')
+  }
+  else if  ((age > 18) && (age < 100)) {
+    console.log("Lighhouse Labs")
+  }
 }
-console.log('Until the sun comes up!')
-
+whichSchool(15);
