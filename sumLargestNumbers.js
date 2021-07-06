@@ -1,12 +1,9 @@
-// In this exerceise we are provided with an array , sort it and return sum of the two largest one,
+const sumLargestNumbers = function(data) {
+  data.sort((a, b) => a-b) // sort the input array in decending order
+  console.log(data.sort())
+  return data[data.length-1]+data[data.length-2] // thake the last two element and add the up
+};
 
-const sumlargestnumbers =(data) =>{
-  let sortedData = data.sort();
-  let sumOfLastTwo = data[data.length-1] + data[data.length-2]
-  return sumOfLastTwo;
-
-}
 console.log(sumLargestNumbers([1, 10]));
 console.log(sumLargestNumbers([1, 2, 3]));
 console.log(sumLargestNumbers([10, 4, 34, 6, 92, 2]));
-console.log(sumLargestNumbers([220, 4000, 34, 6, 92, 2, 50]));
