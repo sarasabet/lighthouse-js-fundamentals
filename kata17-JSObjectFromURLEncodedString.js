@@ -1,41 +1,30 @@
 /*
-
+In this exercise, we will be given a url encoded string of key-value pairs, and we will have to turn it into a JavaScript object.
+URL Encoded Strings
 
 To safely send data in a URL, the data first has to be encoded to convert any special characters to URL safe characters. For this assignment we will only focus on the following URL encoding rules:
 
-%20 represents a space character.
-Key-value pairs are represented using an = character: key=value
-Multiple key-value pairs are separated using a & character: key1=value1&key2=value2
+    %20 represents a space character.
+    Key-value pairs are represented using an = character: key=value
+    Multiple key-value pairs are separated using a & character: key1=value1&key2=value2
 
+So the following URL encoded string:
 */
 
 const urlDecode = function(text) {
-  
-  let temp = ''; // declare a var to save the text and replace the %20 with ' '
-  for ( let i = 0; i < text.length; i ++){
-    if( text[i] === '%' && text[i+1]=== '2' && text[i+2] === '0') {
-      temp  += (' ');
-      i += 2;
-    } 
-    else{
-       temp += text[i];
-    }
-  }
-  
-  let newArray = temp.split('&'); // split the temporary text  with & and make an Array
-  let result = {};// declare an object to save the final result in it
-  for (let i = 0; i < newArray.length; i ++){ // loop through every item of Array
-    for ( let j = 0; j < newArray[i].length; j ++){// loop through every element of each Array's ietm
-      if ( newArray[i][j] === '='){
-        let key = newArray[i].slice(0, j)
-        let value = newArray[i].slice(j+1, newArray[i].length)
-        result[key]= value;
+  let newText = (text.split('%20').join(' ')).split('&') // to replace the %20 with space and creat and array , split with &
+  let newObject ={}
+  newText.forEach(element => {
+    for( let i = 0; i < element.length; i ++){
+      if ( element[i] === '='){
+        newObject[(element.slice(0,i))] = (element.slice(i+1)) // introduce keys and values
+        break;
       }
     }
-  }
-  return result;
-};
+  });
+  return newObject
 
+};
 
 console.log(urlDecode("duck=rubber"));
 console.log(urlDecode("bootcamp=Lighthouse%20Labs"));
